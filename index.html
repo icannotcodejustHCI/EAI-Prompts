@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UpToDate Expert AI · 진료과별 활용 예시</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --blue:#0357A6;
+  --blue-deep:#03427E;
+  --blue-tint:#EDF4FB;
+  --ink:#1B2129;
+  --sub:#5B6572;
+  --line:#E4E9F0;
+  --paper:#F7F9FC;
+  --white:#FFFFFF;
+  --ok:#1B7F4D;
+  --radius:10px;
+  font-size:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);background:var(--white);line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* ---------- header ---------- */
+.site-head{border-bottom:1px solid var(--line);background:var(--white)}
+.site-head-inner{max-width:1060px;margin:0 auto;padding:40px 24px 28px}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.lede{margin-top:10px;color:var(--sub);font-size:.98rem;max-width:640px}
+
+/* ---------- chip nav ---------- */
+.chipbar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.chipbar-inner{max-width:1060px;margin:0 auto;padding:10px 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.chipbar-inner::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--white);color:var(--sub);border-radius:999px;padding:6px 14px;font-size:.85rem;font-weight:600;transition:all .15s}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.chip.active{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* ---------- cases ---------- */
+main{max-width:1060px;margin:0 auto;padding:12px 24px 40px}
+.spec-section{padding:34px 0 6px;border-bottom:1px solid var(--line)}
+.spec-section:last-of-type{border-bottom:none}
+.spec-title{font-size:1.05rem;font-weight:800;color:var(--blue);letter-spacing:-.01em;scroll-margin-top:64px}
+.case{margin-top:20px}
+.case + .case{margin-top:30px;padding-top:26px;border-top:1px dashed var(--line)}
+.vignette{font-weight:700;font-size:.98rem;line-height:1.75;letter-spacing:-.005em}
+.qlist{list-style:none;margin:14px 0 22px}
+.qitem{display:flex;align-items:flex-start;gap:10px;padding:7px 0 7px 6px}
+.qitem::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--ink);margin-top:.6em}
+.qtext{flex:1;font-size:.95rem;color:var(--ink)}
+.qlabel{font-weight:700}
+.copy-btn{flex:0 0 auto;border:1px solid var(--line);background:var(--white);color:var(--sub);border-radius:6px;padding:3px 10px;font-size:.76rem;font-weight:600;transition:all .15s;margin-top:1px}
+.copy-btn:hover{border-color:var(--blue);color:var(--blue)}
+.copy-btn.done{border-color:var(--ok);color:var(--ok)}
+
+/* ---------- guide box ---------- */
+.guide{background:var(--blue-tint);border:1px solid #D3E4F5;border-radius:var(--radius);padding:20px 24px;margin:38px 0 8px;font-size:.93rem;color:#2A445F}
+
+/* ---------- share section ---------- */
+.share{background:var(--paper);border-top:1px solid var(--line);margin-top:24px}
+.share-inner{max-width:1060px;margin:0 auto;padding:44px 24px 52px}
+.share h2{font-size:1.3rem;font-weight:800;letter-spacing:-.015em}
+.share .sub{color:var(--sub);font-size:.92rem;margin-top:6px;max-width:620px}
+.share-actions{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:8px;padding:10px 18px;font-size:.9rem;font-weight:700;border:1px solid transparent;transition:all .15s}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-deep);text-decoration:none}
+.btn-ghost{background:var(--white);color:var(--blue);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--blue);text-decoration:none}
+.shared-list{margin-top:26px;display:grid;gap:12px}
+.shared-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+.shared-card .t{font-weight:700;font-size:.93rem}
+.shared-card .b{margin-top:6px;font-size:.88rem;color:var(--sub);white-space:pre-wrap;word-break:break-word;max-height:9.5em;overflow:hidden}
+.shared-card .m{margin-top:10px;font-size:.78rem;color:#8A94A2;display:flex;gap:12px;align-items:center}
+.shared-card .m img{width:18px;height:18px;border-radius:50%;vertical-align:middle}
+.share-empty{margin-top:24px;color:var(--sub);font-size:.9rem}
+
+/* ---------- footer / admin ---------- */
+footer{border-top:1px solid var(--line);background:var(--white)}
+.foot-inner{max-width:1060px;margin:0 auto;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.8rem;color:#8A94A2;flex-wrap:wrap}
+.admin-link{background:none;border:none;color:#8A94A2;font-size:.8rem;text-decoration:underline}
+.admin-link:hover{color:var(--blue)}
+
+/* ---------- admin modal ---------- */
+.modal-back{position:fixed;inset:0;background:rgba(20,28,40,.45);display:none;align-items:flex-start;justify-content:center;z-index:100;overflow-y:auto;padding:5vh 16px}
+.modal-back.open{display:flex}
+.modal{background:var(--white);border-radius:14px;max-width:640px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal h3{font-size:1.15rem;font-weight:800}
+.modal .hint{font-size:.83rem;color:var(--sub);margin-top:6px;line-height:1.6}
+.field{margin-top:16px}
+.field label{display:block;font-size:.82rem;font-weight:700;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:.9rem;font-family:inherit;background:var(--white);color:var(--ink)}
+.field textarea{min-height:110px;resize:vertical;line-height:1.6}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--blue)}
+.tabs{display:flex;gap:6px;margin-top:20px;border-bottom:1px solid var(--line)}
+.tab{background:none;border:none;padding:8px 14px;font-size:.86rem;font-weight:700;color:var(--sub);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tabpane{display:none;padding-top:4px}
+.tabpane.active{display:block}
+.modal-foot{margin-top:22px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.status{margin-top:14px;font-size:.84rem;border-radius:8px;padding:10px 14px;display:none}
+.status.ok{display:block;background:#EAF6EF;color:var(--ok)}
+.status.err{display:block;background:#FCEEEE;color:#B4232A;word-break:break-word}
+.manage-list{margin-top:14px;max-height:260px;overflow-y:auto;border:1px solid var(--line);border-radius:8px}
+.manage-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;font-size:.83rem;border-bottom:1px solid var(--line)}
+.manage-row:last-child{border-bottom:none}
+.manage-row .v{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.del-btn{border:1px solid var(--line);background:var(--white);color:#B4232A;border-radius:6px;padding:3px 10px;font-size:.76rem;font-weight:600}
+.del-btn:hover{border-color:#B4232A}
+.q-row{display:grid;grid-template-columns:130px 1fr;gap:8px;margin-top:8px}
+
+@media (max-width:640px){
+  h1{font-size:1.5rem}
+  .site-head-inner{padding:30px 18px 22px}
+  main,.chipbar-inner,.share-inner,.foot-inner{padding-left:18px;padding-right:18px}
+  .qitem{flex-wrap:wrap}
+  .copy-btn{margin-left:16px}
+  .q-row{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="site-head-inner">
+    <p class="eyebrow">UpToDate&reg; Expert AI</p>
+    <h1>진료과별 활용 예시</h1>
+    <p class="lede">실제 임상 시나리오 기반의 예시 프롬프트입니다. 각 질문 옆 <b>복사</b> 버튼으로 프롬프트를 복사해 Expert AI에 바로 입력해 보세요.</p>
+  </div>
+</header>
+
+<nav class="chipbar" aria-label="진료과 바로가기">
+  <div class="chipbar-inner" id="chipbar"></div>
+</nav>
+
+<main id="caseRoot" aria-live="polite"></main>
+
+<section class="share" id="share">
+  <div class="share-inner">
+    <h2>프롬프트 공유</h2>
+    <p class="sub">실제 진료에서 유용했던 프롬프트가 있다면 다른 선생님들과 공유해 주세요. 공유된 프롬프트는 검토 후 예시 목록에 반영됩니다.</p>
+    <div class="share-actions">
+      <a class="btn btn-primary" id="shareBtn" href="#" target="_blank" rel="noopener">내 프롬프트 공유하기</a>
+      <a class="btn btn-ghost" id="issuesBtn" href="#" target="_blank" rel="noopener">전체 공유 목록 보기</a>
+    </div>
+    <div class="shared-list" id="sharedList"></div>
+    <p class="share-empty" id="sharedEmpty" hidden>아직 공유된 프롬프트가 없습니다. 첫 번째로 공유해 보세요.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span>UpToDate Expert AI 활용 예시 · Wolters Kluwer Health Korea</span>
+    <button class="admin-link" id="adminOpen">관리자</button>
+  </div>
+</footer>
+
+<!-- ===== 관리자 모달 ===== -->
+<div class="modal-back" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+  <div class="modal">
+    <h3 id="adminTitle">관리자 · 케이스 관리</h3>
+    <p class="hint">변경 사항은 이 저장소의 <code>cases.json</code>에 직접 커밋됩니다. <b>Contents: Read &amp; Write</b> 권한이 있는 Fine-grained personal access token이 필요합니다. 토큰은 저장되지 않으며 이 화면을 닫으면 사라집니다.</p>
+
+    <div class="field">
+      <label for="ghToken">GitHub Personal Access Token</label>
+      <input type="password" id="ghToken" placeholder="github_pat_..." autocomplete="off">
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="addCase" role="tab">케이스 추가</button>
+      <button class="tab" data-tab="addSpec" role="tab">진료과 추가</button>
+      <button class="tab" data-tab="manage" role="tab">삭제 / 관리</button>
+    </div>
+
+    <div class="tabpane active" id="pane-addCase">
+      <div class="field">
+        <label for="caseSpec">진료과</label>
+        <select id="caseSpec"></select>
+      </div>
+      <div class="field">
+        <label for="caseVignette">케이스 (Vignette)</label>
+        <textarea id="caseVignette" placeholder="예: 68세 남성, HTN 병력. 40분간 지속되는 sudden-onset severe chest pain..."></textarea>
+      </div>
+      <div class="field">
+        <label>질문 목록</label>
+        <div id="qRows"></div>
+        <button class="btn btn-ghost" id="addQRow" type="button" style="margin-top:10px;padding:6px 12px;font-size:.82rem">+ 질문 추가</button>
+      </div>
+    </div>
+
+    <div class="tabpane" id="pane-addSpec">
+      <div class="field">
+        <label for="specName">진료과 이름</label>
+        <input type="text" id="specName" placeholder="예: 순환기내과">
+      </div>
+      <p class="hint">추가된 진료과는 케이스가 1개 이상 등록되면 페이지에 표시됩니다.</p>
+    </div>
+
+    <div class="tabpane" id="pane-manage">
+      <p class="hint">삭제 버튼을 누른 뒤 하단 <b>저장 (커밋)</b>을 눌러야 반영됩니다.</p>
+      <div class="manage-list" id="manageList"></div>
+    </div>
+
+    <div class="status" id="adminStatus"></div>
+
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="adminClose">닫기</button>
+      <button class="btn btn-primary" id="adminSave">저장 (커밋)</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   CONFIG — 배포 후 저장소 정보가 자동 인식되지 않으면 직접 수정
+   ========================================================= */
+const CONFIG = {
+  owner: "icannotcodejustHCI",
+  repo:  "EAI-Prompts",
+  branch: "main",
+  casesPath: "cases.json",
+  shareLabel: "prompt-share"
+};
+
+(function deriveRepo(){
+  if (CONFIG.owner && CONFIG.repo) return;
+  const h = location.hostname, p = location.pathname.split("/").filter(Boolean);
+  if (h.endsWith(".github.io")) {
+    CONFIG.owner = CONFIG.owner || h.replace(".github.io","");
+    CONFIG.repo  = CONFIG.repo  || (p[0] || CONFIG.owner + ".github.io");
+  }
+})();
+
+const API = "https://api.github.com";
+let DATA = null;          // {specialties, cases}
+let PENDING = null;       // 관리자 편집용 사본
+let FILE_SHA = null;
+
+/* ---------- 데이터 로드 ---------- */
+async function loadData(){
+  try{
+    const r = await fetch(CONFIG.casesPath + "?t=" + Date.now());
+    if(!r.ok) throw new Error(r.status);
+    DATA = await r.json();
+  }catch(e){
+    document.getElementById("caseRoot").innerHTML =
+      '<p style="padding:40px 0;color:var(--sub)">cases.json을 불러오지 못했습니다. 저장소에 파일이 있는지 확인해 주세요.</p>';
+    return;
+  }
+  renderAll();
+}
+
+/* ---------- 렌더링 ---------- */
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+function renderAll(){
+  const root = document.getElementById("caseRoot");
+  const chipbar = document.getElementById("chipbar");
+  root.innerHTML = ""; chipbar.innerHTML = "";
+
+  const specs = DATA.specialties.filter(s => DATA.cases.some(c => c.specialtyId === s.id));
+
+  // 전체 chip
+  const allChip = document.createElement("button");
+  allChip.className = "chip active"; allChip.textContent = "전체";
+  allChip.onclick = () => filterSpec(null, allChip);
+  chipbar.appendChild(allChip);
+
+  specs.forEach(spec => {
+    const chip = document.createElement("button");
+    chip.className = "chip"; chip.textContent = spec.name;
+    chip.onclick = () => filterSpec(spec.id, chip);
+    chipbar.appendChild(chip);
+
+    const sec = document.createElement("section");
+    sec.className = "spec-section"; sec.dataset.spec = spec.id;
+    sec.innerHTML = '<h2 class="spec-title" id="spec-' + esc(spec.id) + '">' + esc(spec.name) + '</h2>';
+
+    DATA.cases.filter(c => c.specialtyId === spec.id).forEach(c => {
+      const div = document.createElement("div");
+      div.className = "case";
+      let qhtml = "";
+      (c.questions||[]).forEach(q => {
+        const full = (c.vignette ? c.vignette + "\n\n" : "") + q.text;
+        qhtml += '<li class="qitem">' +
+          '<span class="qtext"><span class="qlabel">' + esc(q.label) + ':</span> ' + esc(q.text) + '</span>' +
+          '<button class="copy-btn" data-copy="' + esc(full) + '">복사</button></li>';
+      });
+      div.innerHTML = '<p class="vignette">' + esc(c.vignette) + '</p><ul class="qlist">' + qhtml + '</ul>';
+      sec.appendChild(div);
+    });
+    root.appendChild(sec);
+  });
+
+  const guide = document.createElement("div");
+  guide.className = "guide";
+  guide.innerHTML = "위 예시 질문을 그대로 입력해 보시거나, 실제 진료에서 마주치신 케이스로 테스트해 보시기 바랍니다. 사용 중 개선이 필요하다고 느끼신 부분은 하단 <a href='#share'>프롬프트 공유</a> 섹션을 통해 남기실 수 있습니다.";
+  root.appendChild(guide);
+
+  root.querySelectorAll(".copy-btn").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        btn.textContent = "복사됨"; btn.classList.add("done");
+        setTimeout(()=>{btn.textContent="복사";btn.classList.remove("done");},1600);
+      }catch(e){ alert("클립보드 복사에 실패했습니다."); }
+    });
+  });
+}
+
+function filterSpec(specId, chip){
+  document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+  chip.classList.add("active");
+  document.querySelectorAll(".spec-section").forEach(sec=>{
+    sec.style.display = (!specId || sec.dataset.spec === specId) ? "" : "none";
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ---------- 프롬프트 공유 (GitHub Issues) ---------- */
+function setupShare(){
+  if(!CONFIG.owner || !CONFIG.repo) return;
+  const base = "https://github.com/" + CONFIG.owner + "/" + CONFIG.repo;
+  document.getElementById("shareBtn").href =
+    base + "/issues/new?template=prompt-share.md&title=" + encodeURIComponent("[프롬프트 공유] ");
+  document.getElementById("issuesBtn").href =
+    base + "/issues?q=" + encodeURIComponent("label:" + CONFIG.shareLabel);
+  loadShared();
+}
+
+async function loadShared(){
+  const list = document.getElementById("sharedList");
+  const empty = document.getElementById("sharedEmpty");
+  try{
+    const r = await fetch(API + "/repos/" + CONFIG.owner + "/" + CONFIG.repo +
+      "/issues?labels=" + CONFIG.shareLabel + "&state=open&per_page=20&sort=created&direction=desc");
+    if(!r.ok) throw new Error(r.status);
+    const issues = (await r.json()).filter(i => !i.pull_request);
+    if(!issues.length){ empty.hidden = false; return; }
+    issues.forEach(i=>{
+      const card = document.createElement("article");
+      card.className = "shared-card";
+      card.innerHTML =
+        '<div class="t">' + esc(i.title) + '</div>' +
+        '<div class="b">' + esc(i.body || "") + '</div>' +
+        '<div class="m"><img src="' + esc(i.user.avatar_url) + '" alt="">' +
+        '<span>' + esc(i.user.login) + '</span>' +
+        '<span>' + new Date(i.created_at).toLocaleDateString("ko-KR") + '</span>' +
+        '<a href="' + esc(i.html_url) + '" target="_blank" rel="noopener">GitHub에서 보기</a></div>';
+      list.appendChild(card);
+    });
+  }catch(e){ empty.hidden = false; }
+}
+
+/* ---------- 관리자 ---------- */
+const modal = document.getElementById("adminModal");
+const statusBox = document.getElementById("adminStatus");
+
+document.getElementById("adminOpen").onclick = () => {
+  if(!DATA) return;
+  PENDING = JSON.parse(JSON.stringify(DATA));
+  FILE_SHA = null;
+  statusBox.className = "status";
+  fillSpecSelect(); fillManageList(); resetQRows();
+  document.getElementById("caseVignette").value = "";
+  document.getElementById("specName").value = "";
+  modal.classList.add("open");
+};
+document.getElementById("adminClose").onclick = () => {
+  modal.classList.remove("open");
+  document.getElementById("ghToken").value = "";
+};
+modal.addEventListener("click", e => { if(e.target === modal) document.getElementById("adminClose").click(); });
+
+document.querySelectorAll(".tab").forEach(tab=>{
+  tab.onclick = () => {
+    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+    document.querySelectorAll(".tabpane").forEach(p=>p.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById("pane-" + tab.dataset.tab).classList.add("active");
+  };
+});
+
+function fillSpecSelect(){
+  const sel = document.getElementById("caseSpec");
+  sel.innerHTML = "";
+  PENDING.specialties.forEach(s=>{
+    const o = document.createElement("option");
+    o.value = s.id; o.textContent = s.name; sel.appendChild(o);
+  });
+}
+
+function resetQRows(){
+  const box = document.getElementById("qRows");
+  box.innerHTML = "";
+  addQRow("질문",""); addQRow("F/U 질문","");
+}
+function addQRow(label, text){
+  const box = document.getElementById("qRows");
+  const row = document.createElement("div");
+  row.className = "q-row";
+  row.innerHTML = '<input type="text" class="q-label" value="' + esc(label) + '" placeholder="라벨">' +
+                  '<input type="text" class="q-text" value="' + esc(text) + '" placeholder="질문 내용">';
+  box.appendChild(row);
+}
+document.getElementById("addQRow").onclick = () => addQRow("F/U 질문","");
+
+function fillManageList(){
+  const box = document.getElementById("manageList");
+  box.innerHTML = "";
+  PENDING.cases.forEach((c, idx)=>{
+    const spec = PENDING.specialties.find(s=>s.id===c.specialtyId);
+    const row = document.createElement("div");
+    row.className = "manage-row";
+    row.innerHTML = '<span class="v"><b>' + esc(spec ? spec.name : c.specialtyId) + '</b> · ' +
+      esc(c.vignette.slice(0,50)) + '…</span>';
+    const del = document.createElement("button");
+    del.className = "del-btn"; del.textContent = "삭제";
+    del.onclick = () => { PENDING.cases.splice(idx,1); fillManageList(); };
+    row.appendChild(del);
+    box.appendChild(row);
+  });
+  if(!PENDING.cases.length) box.innerHTML = '<div class="manage-row">케이스가 없습니다.</div>';
+}
+
+function showStatus(kind, msg){
+  statusBox.className = "status " + kind;
+  statusBox.textContent = msg;
+}
+
+document.getElementById("adminSave").onclick = async () => {
+  const token = document.getElementById("ghToken").value.trim();
+  if(!token){ showStatus("err","GitHub 토큰을 입력해 주세요."); return; }
+  if(!CONFIG.owner || !CONFIG.repo){ showStatus("err","저장소 정보를 인식하지 못했습니다. index.html 상단 CONFIG에 owner/repo를 직접 입력해 주세요."); return; }
+
+  // 새 진료과
+  const specName = document.getElementById("specName").value.trim();
+  if(specName && !PENDING.specialties.some(s=>s.name===specName)){
+    const id = "spec-" + Date.now().toString(36);
+    PENDING.specialties.push({id, name:specName});
+    fillSpecSelect();
+  }
+
+  // 새 케이스
+  const vignette = document.getElementById("caseVignette").value.trim();
+  if(vignette){
+    const questions = [];
+    document.querySelectorAll("#qRows .q-row").forEach(row=>{
+      const label = row.querySelector(".q-label").value.trim();
+      const text  = row.querySelector(".q-text").value.trim();
+      if(label && text) questions.push({label, text});
+    });
+    if(!questions.length){ showStatus("err","케이스에 질문을 1개 이상 입력해 주세요."); return; }
+    PENDING.cases.push({ specialtyId: document.getElementById("caseSpec").value, vignette, questions });
+  }
+
+  showStatus("ok","커밋 중…");
+  try{
+    const url = API + "/repos/" + CONFIG.owner + "/" + CONFIG.repo + "/contents/" + CONFIG.casesPath;
+    const headers = { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" };
+
+    const cur = await fetch(url + "?ref=" + CONFIG.branch, {headers});
+    if(cur.ok) FILE_SHA = (await cur.json()).sha;
+    else if(cur.status !== 404) throw new Error("파일 조회 실패 (" + cur.status + ")");
+
+    const json = JSON.stringify(PENDING, null, 2);
+    const b64 = btoa(String.fromCharCode(...new TextEncoder().encode(json)));
+
+    const put = await fetch(url, {
+      method:"PUT", headers,
+      body: JSON.stringify({
+        message: "chore: update cases via admin panel",
+        content: b64, branch: CONFIG.branch,
+        ...(FILE_SHA ? {sha: FILE_SHA} : {})
+      })
+    });
+    if(!put.ok){
+      const err = await put.json().catch(()=>({}));
+      throw new Error("커밋 실패 (" + put.status + ") " + (err.message||""));
+    }
+    DATA = PENDING;
+    renderAll();
+    showStatus("ok","저장 완료. GitHub Pages 반영까지 1–2분 정도 걸릴 수 있습니다.");
+    document.getElementById("caseVignette").value = "";
+    document.getElementById("specName").value = "";
+    resetQRows(); fillManageList();
+  }catch(e){
+    showStatus("err", e.message || "저장에 실패했습니다. 토큰 권한(Contents: Read & Write)을 확인해 주세요.");
+  }
+};
+
+/* ---------- init ---------- */
+loadData();
+setupShare();
+</script>
+</body>
+</html>
