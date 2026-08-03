@@ -160,7 +160,7 @@ footer{border-top:1px solid var(--line);background:var(--white)}
       <a class="btn btn-primary" id="sharePromptBtn" href="#">프롬프트 공유하기</a>
       <a class="btn btn-ghost" id="feedbackBtn" href="#">건의사항 보내기</a>
     </div>
-    <p class="share-note">버튼을 눌러도 메일 작성 화면이 열리지 않는다면 <span class="nb"><button class="linklike" id="copyMail">jiseong.kim@wolterskluwer.com</button> 으로</span> 직접 보내주세요.</p>
+    <p class="share-note">버튼을 눌러도 메일 작성 화면이 열리지 않는다면 <span class="nb"><button class="linklike" id="copyMail">jiseong.kim@wolterskluwer.com</button> 으로</span> 메일 부탁드립니다.</p>
   </div>
 </section>
 
@@ -313,7 +313,7 @@ function renderAll(){
 
   const guide = document.createElement("div");
   guide.className = "guide";
-  guide.innerHTML = "위 예시 질문을 그대로 입력해 보시거나, 실제 진료에서 마주치신 케이스로 테스트해 보시기 바랍니다. 사용 중 개선이 필요하다고 느끼신 부분은 하단 <a href='#share'>프롬프트 공유 및 건의사항</a> 섹션을 통해 남겨주시기 바랍니다.";
+  guide.innerHTML = "위 예시 질문을 그대로 입력해 보시거나, 실제 진료에서 마주치신 케이스로 테스트해 보시기 바랍니다. 사용 중 개선이 필요하다고 느끼신 부분은 하단 <a href='#share'>프롬프트 공유 및 건의사항</a> 섹션을 통해 공유해주세요.";
   root.appendChild(guide);
 
   root.querySelectorAll(".copy-btn").forEach(btn => {
