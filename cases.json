@@ -162,7 +162,8 @@
           "label": "F/U 질문",
           "text": "CKD stage 3a에서 SGLT2 inhibitor의 기대 가능한 glycemic efficacy는 어느 정도이며, HbA1c target 도달을 위해 추가 치료가 필요한가?"
         }
-      ]
+      ],
+      "note": "이 케이스에는 의도적으로 잘못된 전제가 포함되어 있습니다. Expert AI가 전제를 그대로 받아들이는지, 아니면 근거를 들어 교정하는지 확인해 보세요."
     },
     {
       "specialtyId": "id",
