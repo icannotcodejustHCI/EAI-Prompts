@@ -43,8 +43,8 @@ h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;line-height:1.3}
 
 /* ---------- chip nav ---------- */
 .chipbar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-.chipbar-inner{max-width:1060px;margin:0 auto;padding:10px 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
-.chipbar-inner::-webkit-scrollbar{display:none}
+.chipbar-wrap{position:relative}
+.chipbar-inner{max-width:1060px;margin:0 auto;padding:10px 24px;display:flex;gap:8px;flex-wrap:wrap}
 .chip{flex:0 0 auto;border:1px solid var(--line);background:var(--white);color:var(--sub);border-radius:999px;padding:6px 14px;font-size:.85rem;font-weight:600;transition:all .15s}
 .chip:hover{border-color:var(--blue);color:var(--blue)}
 .chip.active{background:var(--blue);border-color:var(--blue);color:#fff}
@@ -57,7 +57,8 @@ main{max-width:1060px;margin:0 auto;padding:12px 24px 40px}
 .case{margin-top:20px}
 .case + .case{margin-top:30px;padding-top:26px;border-top:1px dashed var(--line)}
 .vignette{font-weight:700;font-size:.98rem;line-height:1.78;letter-spacing:-.005em}
-.qlist{list-style:none;margin:14px 0 22px}
+.qlist{list-style:none;margin:14px 0 18px}
+.case-note{margin:0 0 4px;padding:10px 14px;border-left:3px solid #C9D3DF;background:var(--paper);border-radius:0 6px 6px 0;font-size:.85rem;color:var(--sub);line-height:1.7;max-width:44em}
 .qitem{display:flex;align-items:flex-start;gap:10px;padding:7px 0 7px 6px}
 .qitem::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--ink);margin-top:.6em}
 .qtext{flex:1;font-size:.95rem;color:var(--ink)}
@@ -126,6 +127,10 @@ footer{border-top:1px solid var(--line);background:var(--white)}
   h1{font-size:1.5rem}
   .site-head-inner{padding:30px 18px 22px}
   main,.chipbar-inner,.share-inner,.foot-inner{padding-left:18px;padding-right:18px}
+  .chipbar-inner{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-right:34px}
+  .chipbar-inner::-webkit-scrollbar{display:none}
+  .chipbar-wrap::after{content:"";position:absolute;top:0;right:0;width:34px;height:100%;pointer-events:none;
+    background:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,.96))}
   .qitem{flex-wrap:wrap}
   .copy-btn{margin-left:16px}
   .q-row{grid-template-columns:1fr}
@@ -147,7 +152,9 @@ footer{border-top:1px solid var(--line);background:var(--white)}
 </header>
 
 <nav class="chipbar" aria-label="진료과 바로가기">
-  <div class="chipbar-inner" id="chipbar"></div>
+  <div class="chipbar-wrap">
+    <div class="chipbar-inner" id="chipbar"></div>
+  </div>
 </nav>
 
 <main id="caseRoot" aria-live="polite"></main>
@@ -200,6 +207,10 @@ footer{border-top:1px solid var(--line);background:var(--white)}
       <div class="field">
         <label for="caseVignette">케이스 (Vignette)</label>
         <textarea id="caseVignette" placeholder="예: 68세 남성, HTN 병력. 40분간 지속되는 sudden-onset severe chest pain..."></textarea>
+      </div>
+      <div class="field">
+        <label for="caseNote">안내문 (선택)</label>
+        <input type="text" id="caseNote" placeholder="예: 이 케이스에는 의도적으로 잘못된 전제가 포함되어 있습니다.">
       </div>
       <div class="field">
         <label>질문 목록</label>
@@ -305,7 +316,8 @@ function renderAll(){
           '<span class="qtext"><span class="qlabel">' + esc(q.label) + ':</span> ' + esc(q.text) + '</span>' +
           '<button class="copy-btn" data-copy="' + esc(full) + '">복사</button></li>';
       });
-      div.innerHTML = '<p class="vignette">' + esc(c.vignette) + '</p><ul class="qlist">' + qhtml + '</ul>';
+      const note = c.note ? '<p class="case-note">' + esc(c.note) + '</p>' : '';
+      div.innerHTML = '<p class="vignette">' + esc(c.vignette) + '</p><ul class="qlist">' + qhtml + '</ul>' + note;
       sec.appendChild(div);
     });
     root.appendChild(sec);
@@ -392,6 +404,7 @@ document.getElementById("adminOpen").onclick = () => {
   statusBox.className = "status";
   fillSpecSelect(); fillManageList(); resetQRows();
   document.getElementById("caseVignette").value = "";
+  document.getElementById("caseNote").value = "";
   document.getElementById("specName").value = "";
   modal.classList.add("open");
 };
@@ -480,7 +493,10 @@ document.getElementById("adminSave").onclick = async () => {
       if(label && text) questions.push({label, text});
     });
     if(!questions.length){ showStatus("err","케이스에 질문을 1개 이상 입력해 주세요."); return; }
-    PENDING.cases.push({ specialtyId: document.getElementById("caseSpec").value, vignette, questions });
+    const note = document.getElementById("caseNote").value.trim();
+    const entry = { specialtyId: document.getElementById("caseSpec").value, vignette, questions };
+    if(note) entry.note = note;
+    PENDING.cases.push(entry);
   }
 
   showStatus("ok","커밋 중…");
@@ -511,6 +527,7 @@ document.getElementById("adminSave").onclick = async () => {
     renderAll();
     showStatus("ok","저장 완료. GitHub Pages 반영까지 1–2분 정도 걸릴 수 있습니다.");
     document.getElementById("caseVignette").value = "";
+    document.getElementById("caseNote").value = "";
     document.getElementById("specName").value = "";
     resetQRows(); fillManageList();
   }catch(e){
