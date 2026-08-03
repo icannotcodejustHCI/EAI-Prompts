@@ -1,180 +1,345 @@
 {
   "specialties": [
-    { "id": "em", "name": "응급의학과" },
-    { "id": "cardio", "name": "심장내과" },
-    { "id": "pulm", "name": "호흡기내과" },
-    { "id": "gi", "name": "소화기내과" },
-    { "id": "nephro", "name": "신장내과" },
-    { "id": "endo", "name": "내분비내과" },
-    { "id": "id", "name": "감염내과" },
-    { "id": "fm", "name": "가정의학과" },
-    { "id": "general", "name": "일반" },
-    { "id": "surg", "name": "외과" },
-    { "id": "obgyn", "name": "산부인과" },
-    { "id": "gyn-onc", "name": "산부인과 | 부인종양" },
-    { "id": "peds", "name": "소아청소년과" },
-    { "id": "nursing", "name": "간호사" },
-    { "id": "pharm", "name": "약사" }
+    {
+      "id": "em",
+      "name": "응급의학과"
+    },
+    {
+      "id": "cardio",
+      "name": "심장내과"
+    },
+    {
+      "id": "pulm",
+      "name": "호흡기내과"
+    },
+    {
+      "id": "gi",
+      "name": "소화기내과"
+    },
+    {
+      "id": "nephro",
+      "name": "신장내과"
+    },
+    {
+      "id": "endo",
+      "name": "내분비내과"
+    },
+    {
+      "id": "id",
+      "name": "감염내과"
+    },
+    {
+      "id": "fm",
+      "name": "가정의학과"
+    },
+    {
+      "id": "general",
+      "name": "일반"
+    },
+    {
+      "id": "surg",
+      "name": "외과"
+    },
+    {
+      "id": "obgyn",
+      "name": "산부인과"
+    },
+    {
+      "id": "gyn-onc",
+      "name": "산부인과 | 부인종양"
+    },
+    {
+      "id": "peds",
+      "name": "소아청소년과"
+    },
+    {
+      "id": "nursing",
+      "name": "간호사"
+    },
+    {
+      "id": "pharm",
+      "name": "약사"
+    }
   ],
   "cases": [
     {
       "specialtyId": "em",
       "vignette": "68세 남성, HTN 병력. 40분간 지속되는 sudden-onset severe chest pain, upper back으로 radiation. ECG상 aVR/V1 mild STE, V5–V6 STD, TnI 0.12 ng/mL. V/S: BP Rt 180/95 mmHg, Lt 150/85 mmHg, HR 98회/분, SpO2 96% (room air)",
       "questions": [
-        { "label": "질문", "text": "가장 가능성 높은 진단과 즉각적인 처치는?" },
-        { "label": "F/U 질문", "text": "Iodinated contrast allergy가 확인된 경우 영상 검사와 치료는 어떻게 진행해야 하는가?" },
-        { "label": "F/U 질문", "text": "권장되는 anti-impulse therapy 전략은? First-line agent와 dosing을 포함해 설명해 줘." }
+        {
+          "label": "질문",
+          "text": "가장 가능성 높은 진단과 즉각적인 처치는?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "Iodinated contrast allergy가 확인된 경우 영상 검사와 치료는 어떻게 진행해야 하는가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "권장되는 anti-impulse therapy 전략은? First-line agent와 dosing을 포함해 설명해 줘."
+        }
       ]
     },
     {
       "specialtyId": "cardio",
       "vignette": "Malignant lymphoma 환자에서 frequent ventricular arrhythmias 동반. Doxorubicin을 포함한 chemotherapy regimen 고려 중",
       "questions": [
-        { "label": "질문", "text": "이 환자에게 doxorubicin을 포함한 chemotherapy를 시행할 수 있는가?" },
-        { "label": "F/U 질문", "text": "Doxorubicin을 반드시 사용해야 한다면 dexrazoxane 등 cardioprotective agent에 대한 guideline이 있는가? Cardiotoxicity가 더 낮은 대체 regimen은?" }
+        {
+          "label": "질문",
+          "text": "이 환자에게 doxorubicin을 포함한 chemotherapy를 시행할 수 있는가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "Doxorubicin을 반드시 사용해야 한다면 dexrazoxane 등 cardioprotective agent에 대한 guideline이 있는가? Cardiotoxicity가 더 낮은 대체 regimen은?"
+        }
       ]
     },
     {
       "specialtyId": "pulm",
-      "vignette": "54세 남성, ESRF로 HD 중이며 TTE상 EF는 normal. CT thorax에서 worsening LLL consolidation과 bilateral pleural effusions 확인. Pleural fluid: protein ratio 0.54, LDH ratio 0.54, pleural fluid-to-serum albumin gradient 7",
+      "vignette": "54세 남성, ESRF로 HD 중이며 TTE상 EF는 normal. CT thorax에서 worsening LLL consolidation과 bilateral pleural effusions 확인. Pleural fluid: protein ratio 0.54, LDH ratio 0.54. Serum albumin 3.9 g/dL, pleural fluid albumin 2.2 g/dL (serum-to-pleural albumin gradient 1.7 g/dL)",
       "questions": [
-        { "label": "질문", "text": "해당 pleural effusion을 어떻게 해석해야 하는가?" }
+        {
+          "label": "질문",
+          "text": "해당 pleural effusion을 어떻게 해석해야 하는가?"
+        }
       ]
     },
     {
       "specialtyId": "pulm",
       "vignette": "Bowel perforation 후 severe ARDS (P/F ~90)와 active candidemia 동반. Source control 시행 및 echinocandin 투여 중",
       "questions": [
-        { "label": "질문", "text": "이 환자의 ARDS에 corticosteroid를 사용하는 것이 타당한가?" },
-        { "label": "F/U 질문", "text": "Combined organ failure가 있는 환자에서 echinocandin의 dose adjustment가 필요한가?" }
+        {
+          "label": "질문",
+          "text": "이 환자의 ARDS에 corticosteroid를 사용하는 것이 타당한가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "Combined organ failure가 있는 환자에서 echinocandin의 dose adjustment가 필요한가?"
+        }
       ]
     },
     {
       "specialtyId": "gi",
       "vignette": "HBV cirrhosis 환자, HCC로 right hepatectomy 시행 18개월 후 recurrence. CT상 segment IVb에 3.2 cm arterially enhancing lesion with washout, left lobe에 1.5 cm satellite nodules 2개 확인. Macrovascular invasion과 extrahepatic spread는 없음. Child-Pugh A6, ECOG 0, Plt 95 K, mild splenomegaly, patent PV, AFP 480 ng/mL",
       "questions": [
-        { "label": "질문", "text": "Repeat resection, ablation, TACE의 선택 기준과 근거는?" },
-        { "label": "F/U 질문", "text": "Problem list와 선택 근거를 포함한 외과 consult A/P 초안을 작성해 줘." }
+        {
+          "label": "질문",
+          "text": "Repeat resection, ablation, TACE의 선택 기준과 근거는?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "Problem list와 선택 근거를 포함한 외과 consult A/P 초안을 작성해 줘."
+        }
       ]
     },
     {
       "specialtyId": "nephro",
       "vignette": "65세 남성, PR3-ANCA positive, Cr 5.8 mg/dL, RBC casts, proteinuria 1.2 g/day, declining Hb로 DAH 의심, 현재 oliguric 상태",
       "questions": [
-        { "label": "질문", "text": "Plasma exchange가 필요한가?" },
-        { "label": "F/U 질문", "text": "TPE를 시행하기로 했다면 night duty 간호사가 집중적으로 monitoring해야 할 complication은?" },
-        { "label": "F/U 질문", "text": "TPE 시행 중 10–15분 간격으로 확인해야 할 항목은?" }
+        {
+          "label": "질문",
+          "text": "Plasma exchange가 필요한가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "TPE를 시행하기로 했다면 night duty 간호사가 집중적으로 monitoring해야 할 complication은?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "TPE 시행 중 10–15분 간격으로 확인해야 할 항목은?"
+        }
       ]
     },
     {
       "specialtyId": "endo",
       "vignette": "62세 여성, T2DM, BMI 30, CKD stage 3a, NAFLD 동반. HbA1c 8.7%, metformin과 pioglitazone 사용 중 peripheral edema 발생",
       "questions": [
-        { "label": "질문", "text": "CV/renal benefit과 fluid-overload risk를 비교했을 때 pioglitazone을 SGLT2 inhibitor로 변경해야 하는가?" },
-        { "label": "F/U 질문", "text": "CKD stage 3a에서 SGLT2 inhibitor의 기대 가능한 glycemic efficacy는 어느 정도이며, HbA1c target 도달을 위해 추가 치료가 필요한가?" }
+        {
+          "label": "질문",
+          "text": "CV/renal benefit과 fluid-overload risk를 비교했을 때 pioglitazone을 SGLT2 inhibitor로 변경해야 하는가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "CKD stage 3a에서 SGLT2 inhibitor의 기대 가능한 glycemic efficacy는 어느 정도이며, HbA1c target 도달을 위해 추가 치료가 필요한가?"
+        }
       ]
     },
     {
       "specialtyId": "id",
       "vignette": "M. abscessus pulmonary NTM infection으로 IV amikacin과 imipenem 사용 중. Day 14에 Cr이 0.7에서 2.4 mg/dL로 상승했으며, amikacin trough는 10 µg/mL 초과",
       "questions": [
-        { "label": "질문", "text": "Antimicrobial therapy를 어떻게 조정하고, 전체 management plan은 어떻게 수립해야 하는가?" },
-        { "label": "F/U 질문", "text": "Amikacin을 중단해야 한다면 M. abscessus regimen의 대체 option은?" },
-        { "label": "약사 관점 질문", "text": "Supratherapeutic trough와 상승하는 Cr을 고려할 때 amikacin dosing을 어떻게 조정해야 하는가?" },
-        { "label": "F/U 질문", "text": "이후 dosing에 적용할 target trough/peak level과 monitoring plan은?" }
+        {
+          "label": "질문",
+          "text": "Antimicrobial therapy를 어떻게 조정하고, 전체 management plan은 어떻게 수립해야 하는가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "Amikacin을 중단해야 한다면 M. abscessus regimen의 대체 option은?"
+        },
+        {
+          "label": "약사 관점 질문",
+          "text": "Supratherapeutic trough와 상승하는 Cr을 고려할 때 amikacin dosing을 어떻게 조정해야 하는가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "이후 dosing에 적용할 target trough/peak level과 monitoring plan은?"
+        }
       ]
     },
     {
       "specialtyId": "fm",
       "vignette": "45세 남성, 5일간 fever, cough, SOB 지속. CXR상 RLL consolidation 확인",
       "questions": [
-        { "label": "질문", "text": "CAP 진단과 CURB-65 평가, empiric antibiotic 선택지를 설명해 줘." },
-        { "label": "F/U 질문", "text": "병동에서 SOB가 악화되기 시작하면 간호 인력이 우선해야 할 vital sign 평가와 처치는?" }
+        {
+          "label": "질문",
+          "text": "CAP 진단과 CURB-65 평가, empiric antibiotic 선택지를 설명해 줘."
+        },
+        {
+          "label": "F/U 질문",
+          "text": "병동에서 SOB가 악화되기 시작하면 간호 인력이 우선해야 할 vital sign 평가와 처치는?"
+        }
       ]
     },
     {
       "specialtyId": "general",
       "vignette": "Lantus 16 U와 Apidra 6-6-6 사용 중이던 환자가 현재 NPO 상태. AM glucose 138 mg/dL. 주치의는 Apidra를 중단하고 Lantus는 유지하도록 지시",
       "questions": [
-        { "label": "질문", "text": "NPO 상태에서도 insulin을 투여해도 되는가?" },
-        { "label": "F/U 질문", "text": "NPO 중 glucose가 상승하면 insulin drip을 시작해야 하는가, correctional insulin을 사용해야 하는가? Initial dose는 어떻게 계산하는가?" },
-        { "label": "F/U 질문", "text": "NPO 중 Lantus를 유지하는 근거는? Renal impairment가 동반된 경우 dose는 어떻게 조정하는가?" }
+        {
+          "label": "질문",
+          "text": "NPO 상태에서도 insulin을 투여해도 되는가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "NPO 중 glucose가 상승하면 insulin drip을 시작해야 하는가, correctional insulin을 사용해야 하는가? Initial dose는 어떻게 계산하는가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "NPO 중 Lantus를 유지하는 근거는? Renal impairment가 동반된 경우 dose는 어떻게 조정하는가?"
+        }
       ]
     },
     {
       "specialtyId": "surg",
       "vignette": "45세 남성, pheochromocytoma로 laparoscopic adrenalectomy 시행한 POD#0. BP 80/50 mmHg, HR 115회/분, RR 20회/분, T 36.8°C, U/O 10 cc/hr 미만, CVP 3. Impression: post-op hypotension과 oliguria, catecholamine withdrawal에 의한 pre-renal AKI 의심",
       "questions": [
-        { "label": "질문", "text": "Night duty 전공의로서 시행해야 할 초기 처치와 workup은?" },
-        { "label": "F/U 질문", "text": "충분한 fluid resuscitation에도 hypotension이 지속되면 다음 단계는 무엇이며, 우선 고려할 vasopressor는?" },
-        { "label": "F/U 질문", "text": "주치의에게 즉시 보고해야 할 red flag 소견은?" }
+        {
+          "label": "질문",
+          "text": "Night duty 전공의로서 시행해야 할 초기 처치와 workup은?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "충분한 fluid resuscitation에도 hypotension이 지속되면 다음 단계는 무엇이며, 우선 고려할 vasopressor는?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "주치의에게 즉시 보고해야 할 red flag 소견은?"
+        }
       ]
     },
     {
       "specialtyId": "obgyn",
       "vignette": "임신 40주 여성. 2주간 3 kg 체중 증가, BP 160/100 mmHg, HR 82회/분, 갑작스러운 복통으로 내원. Chronic poorly-controlled HTN 병력, urine protein 2+",
       "questions": [
-        { "label": "질문", "text": "이 환자를 어떻게 management해야 하는가?" }
+        {
+          "label": "질문",
+          "text": "이 환자를 어떻게 management해야 하는가?"
+        }
       ]
     },
     {
       "specialtyId": "gyn-onc",
       "vignette": "63세 여성, recurrent high-grade serous ovarian cancer. Debulking surgery 및 carboplatin/paclitaxel 6 cycles 종료 8개월 후 abdominal distension으로 내원. CT상 peritoneal carcinomatosis와 moderate ascites 확인, cytology positive. CA-125 620 U/mL, nadir 12 U/mL, BRCA wild type, HRD pending, ECOG 1",
       "questions": [
-        { "label": "질문", "text": "최적의 systemic treatment strategy는 무엇이며, regimen 선택은 어떤 요인에 따라 결정되는가?" },
-        { "label": "F/U 질문", "text": "Platinum-resistant disease, PFI 6개월 미만이라면 regimen은 어떻게 달라지는가?" },
-        { "label": "F/U 질문", "text": "Response 이후 적용 가능한 maintenance option은 무엇이며, 아직 확인되지 않은 HRD/BRCA 결과가 선택에 어떤 영향을 주는가?" }
+        {
+          "label": "질문",
+          "text": "최적의 systemic treatment strategy는 무엇이며, regimen 선택은 어떤 요인에 따라 결정되는가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "Platinum-resistant disease, PFI 6개월 미만이라면 regimen은 어떻게 달라지는가?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "Response 이후 적용 가능한 maintenance option은 무엇이며, 아직 확인되지 않은 HRD/BRCA 결과가 선택에 어떤 영향을 주는가?"
+        }
       ]
     },
     {
       "specialtyId": "peds",
       "vignette": "5세 여아(16 kg), biliary atresia로 영아기에 Kasai portoenterostomy 시행, cirrhosis 및 portal hypertension 동반. 3개월 내 두 번째 hematemesis 및 melena로 내원. 이전 EGD에서 grade III esophageal varices 확인되어 band ligation 시행. 진찰 소견: pallor, splenomegaly, mild ascites. V/S: BP 85/50 mmHg, HR 140회/분. Labs: Hb 6.8 g/dL, Plt 70 K, INR 1.6, total bilirubin 4.2 mg/dL, albumin 2.8 g/dL",
       "questions": [
-        { "label": "질문", "text": "소아과 의사로서 이 환아의 recurrent variceal bleeding을 관리 중 — acute management와 secondary prophylaxis option은?" },
-        { "label": "F/U 질문", "text": "이 환아에서 secondary prophylaxis로 non-selective beta-blocker가 적절한가? 소아를 대상으로 한 evidence는?" },
-        { "label": "F/U 질문", "text": "Liver transplant evaluation은 어느 시점에 시작해야 하며, 환아의 체구를 고려할 때 TIPS와 surgical shunt는 어떻게 비교되는가?" }
+        {
+          "label": "질문",
+          "text": "소아과 의사로서 이 환아의 recurrent variceal bleeding을 관리 중 — acute management와 secondary prophylaxis option은?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "이 환아에서 secondary prophylaxis로 non-selective beta-blocker가 적절한가? 소아를 대상으로 한 evidence는?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "Liver transplant evaluation은 어느 시점에 시작해야 하며, 환아의 체구를 고려할 때 TIPS와 surgical shunt는 어떻게 비교되는가?"
+        }
       ]
     },
     {
       "specialtyId": "nursing",
       "vignette": "71세 남성(61 kg), sigmoid colectomy 후 POD#1, U/O 10 cc/hr가 8시간째 지속",
       "questions": [
-        { "label": "질문", "text": "담당 간호사로서 무엇을 보고해야 하며, 어떤 intervention을 예상해야 하는가?" }
+        {
+          "label": "질문",
+          "text": "담당 간호사로서 무엇을 보고해야 하며, 어떤 intervention을 예상해야 하는가?"
+        }
       ]
     },
     {
       "specialtyId": "nursing",
       "vignette": "Colectomy 후 POD#1–2, prophylactic enoxaparin 사용 중. aPTT가 약간 연장되었으나 bleeding은 없고, 주치의는 유지하도록 지시",
       "questions": [
-        { "label": "질문", "text": "aPTT 연장의 원인으로 무엇을 생각할 수 있는가?" }
+        {
+          "label": "질문",
+          "text": "aPTT 연장의 원인으로 무엇을 생각할 수 있는가?"
+        }
       ]
     },
     {
       "specialtyId": "nursing",
       "vignette": "52세 여성, 응급실 triage. 4일간 fever 39.0°C 지속, 다량의 hematemesis와 함께 epistaxis 동반",
       "questions": [
-        { "label": "질문", "text": "Triage 간호사로서 지금 즉시 시행할 수 있는 조치는?" }
+        {
+          "label": "질문",
+          "text": "Triage 간호사로서 지금 즉시 시행할 수 있는 조치는?"
+        }
       ]
     },
     {
       "specialtyId": "pharm",
       "vignette": "Amphotericin B bladder irrigation 처방",
       "questions": [
-        { "label": "질문", "text": "Dosing을 포함한 처방 초안과 함께, 단계별 preparation 및 administration protocol을 상세히 작성해 줘." }
+        {
+          "label": "질문",
+          "text": "Dosing을 포함한 처방 초안과 함께, 단계별 preparation 및 administration protocol을 상세히 작성해 줘."
+        }
       ]
     },
     {
       "specialtyId": "pharm",
       "vignette": "79세 여성, HTN, DM, OA, insomnia, CKD로 14개 약제 복용 중",
       "questions": [
-        { "label": "질문", "text": "Potentially inappropriate medication과 처방 optimization 기회를 확인해 줘." }
+        {
+          "label": "질문",
+          "text": "Potentially inappropriate medication과 처방 optimization 기회를 확인해 줘."
+        }
       ]
     },
     {
       "specialtyId": "pharm",
       "vignette": "Triple-negative breast cancer 치료",
       "questions": [
-        { "label": "질문", "text": "Trodelvy와 Enhertu 선택 시 고려사항은?" }
+        {
+          "label": "질문",
+          "text": "Trodelvy와 Enhertu 선택 시 고려사항은?"
+        }
       ]
     }
   ]
