@@ -1,0 +1,97 @@
+{
+  "specialties": [
+    { "id": "em", "name": "응급의학과" },
+    { "id": "nephro", "name": "신장내과" },
+    { "id": "gi", "name": "소화기내과" },
+    { "id": "id", "name": "감염내과" },
+    { "id": "gyn-onc", "name": "산부인과 | 부인종양" },
+    { "id": "peds", "name": "소아청소년과" },
+    { "id": "nursing", "name": "간호사" },
+    { "id": "pharm", "name": "약사" }
+  ],
+  "cases": [
+    {
+      "specialtyId": "em",
+      "vignette": "68세 남성, HTN 병력. 40분간 지속되는 sudden-onset severe chest pain, upper back으로 radiation. ECG상 aVR/V1 mild STE, V5–V6 STD, TnI 0.12 ng/mL. 양팔 BP 차이: Rt 180/95 mmHg, Lt 150/85 mmHg",
+      "questions": [
+        { "label": "질문", "text": "가장 가능성 높은 진단과 즉각적인 처치는?" },
+        { "label": "F/U 질문", "text": "Iodinated contrast allergy가 있다면 영상 검사와 치료는 어떻게 진행해야 하는가?" }
+      ]
+    },
+    {
+      "specialtyId": "nephro",
+      "vignette": "65세 남성, PR3-ANCA positive, Cr 5.8 mg/dL, RBC casts, proteinuria 1.2 g/day, declining Hb로 DAH 의심, 현재 oliguric 상태",
+      "questions": [
+        { "label": "질문", "text": "Plasma exchange가 필요한가?" },
+        { "label": "F/U 질문", "text": "TPE 시행 시 집중적으로 monitoring해야 할 complication은?" }
+      ]
+    },
+    {
+      "specialtyId": "gi",
+      "vignette": "HBV cirrhosis 환자, HCC로 right hepatectomy 시행 18개월 후 recurrence. Segment IVb에 3.2 cm arterially enhancing lesion과 satellite nodules 2개가 확인됨. Child-Pugh A6, ECOG 0, AFP 480 ng/mL",
+      "questions": [
+        { "label": "질문", "text": "Repeat resection, ablation, TACE의 선택 기준은?" },
+        { "label": "F/U 질문", "text": "Problem list와 선택 근거를 포함한 외과 consult A/P 초안을 작성해 줘." }
+      ]
+    },
+    {
+      "specialtyId": "id",
+      "vignette": "M. abscessus pulmonary NTM infection으로 IV amikacin과 imipenem 사용 중. Day 14에 Cr이 0.7에서 2.4 mg/dL로 상승했으며, amikacin trough는 10 µg/mL 초과",
+      "questions": [
+        { "label": "질문", "text": "Antimicrobial therapy는 어떻게 조정해야 하는가?" },
+        { "label": "F/U 질문", "text": "Amikacin을 중단해야 한다면 M. abscessus regimen의 대체 option은?" }
+      ]
+    },
+    {
+      "specialtyId": "gyn-onc",
+      "vignette": "63세 여성, recurrent high-grade serous ovarian cancer. Debulking surgery 및 carboplatin/paclitaxel 6 cycles 종료 8개월 후 peritoneal carcinomatosis와 ascites 발생. CA-125 620 U/mL, nadir 12 U/mL, BRCA wild type, HRD pending, ECOG 1",
+      "questions": [
+        { "label": "질문", "text": "최적의 systemic treatment strategy와 선택 기준은?" },
+        { "label": "F/U 질문", "text": "Platinum-resistant disease, PFI 6개월 미만이라면 regimen은 어떻게 달라지는가?" }
+      ]
+    },
+    {
+      "specialtyId": "peds",
+      "vignette": "5세 여아(16 kg), biliary atresia로 영아기에 Kasai portoenterostomy 시행, cirrhosis 및 portal hypertension 동반. 3개월 내 두 번째 hematemesis 및 melena로 내원. 이전 EGD에서 grade III esophageal varices 확인되어 band ligation 시행. 진찰 소견: pallor, splenomegaly, mild ascites. V/S: BP 85/50 mmHg, HR 140회/분. Labs: Hb 6.8 g/dL, Plt 70K, INR 1.6, total bilirubin 4.2 mg/dL, albumin 2.8 g/dL",
+      "questions": [
+        { "label": "질문", "text": "소아과 의사로서 이 환아의 recurrent variceal bleeding을 관리 중 — acute management와 secondary prophylaxis option은?" },
+        { "label": "F/U 질문", "text": "Liver transplant evaluation은 어느 시점에 시작해야 하며, 환아의 체구를 고려할 때 TIPS와 surgical shunt는 어떻게 비교되는가?" }
+      ]
+    },
+    {
+      "specialtyId": "nursing",
+      "vignette": "71세 남성(61 kg), sigmoid colectomy 후 POD#1, U/O 10cc/hr가 8시간째 지속",
+      "questions": [
+        { "label": "질문", "text": "담당 간호사로서 무엇을 보고해야 하며, 어떤 intervention을 예상해야 하는가?" }
+      ]
+    },
+    {
+      "specialtyId": "nursing",
+      "vignette": "Colectomy 후 POD#1–2, prophylactic enoxaparin 사용 중. aPTT가 약간 연장되었으나 bleeding은 없고, 주치의는 유지하도록 지시",
+      "questions": [
+        { "label": "질문", "text": "aPTT 연장의 원인으로 무엇을 생각할 수 있는가?" }
+      ]
+    },
+    {
+      "specialtyId": "pharm",
+      "vignette": "Amphotericin B bladder irrigation 처방",
+      "questions": [
+        { "label": "질문", "text": "Dosing을 포함한 처방 초안과 함께, 단계별 preparation 및 administration protocol을 상세히 작성해 줘." }
+      ]
+    },
+    {
+      "specialtyId": "pharm",
+      "vignette": "79세 여성, HTN, DM, OA, insomnia, CKD로 14개 약제 복용 중",
+      "questions": [
+        { "label": "질문", "text": "Potentially inappropriate medication과 처방 optimization 기회를 확인해 줘." }
+      ]
+    },
+    {
+      "specialtyId": "pharm",
+      "vignette": "Triple-negative breast cancer 치료",
+      "questions": [
+        { "label": "질문", "text": "Trodelvy와 Enhertu 선택 시 고려사항은?" }
+      ]
+    }
+  ]
+}
