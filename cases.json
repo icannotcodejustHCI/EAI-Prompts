@@ -325,11 +325,19 @@
     },
     {
       "specialtyId": "pharm",
-      "vignette": "79세 여성, HTN, DM, OA, insomnia, CKD로 14개 약제 복용 중",
+      "vignette": "79세 여성, HTN, DM, OA, insomnia, CKD stage 3b(eGFR 38 mL/min/1.73m²)로 14개 약제 복용 중. HbA1c 6.9%, BP 128/72 mmHg. 최근 3개월간 낙상 2회, 기립 시 어지럼 호소\n현재 처방: amlodipine 10 mg qd · losartan 100 mg qd · hydrochlorothiazide 25 mg qd · metformin 1,000 mg bid · glimepiride 4 mg qd · ibuprofen 400 mg tid prn · tramadol 50 mg tid prn · zolpidem 10 mg qhs · alprazolam 0.25 mg qhs prn · amitriptyline 10 mg qhs · omeprazole 20 mg qd(14개월째) · aspirin 100 mg qd(일차예방) · calcium carbonate 500 mg + vitamin D · diphenhydramine 25 mg prn",
       "questions": [
         {
           "label": "질문",
           "text": "Potentially inappropriate medication과 처방 optimization 기회를 확인해 줘."
+        },
+        {
+          "label": "F/U 질문",
+          "text": "eGFR 38 mL/min/1.73m²를 고려할 때 renal dose adjustment 또는 중단이 필요한 약제는?"
+        },
+        {
+          "label": "F/U 질문",
+          "text": "Deprescribing 우선순위를 정하고, 중단이 필요한 약제의 단계별 tapering 계획을 제시해 줘."
         }
       ]
     },
