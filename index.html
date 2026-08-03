@@ -36,6 +36,7 @@ button{font-family:inherit;cursor:pointer}
 .site-head{border-bottom:1px solid var(--line);background:var(--white)}
 .site-head-inner{max-width:1060px;margin:0 auto;padding:40px 24px 28px}
 .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.brand-logo{display:block;height:58px;width:auto;margin-bottom:18px}
 h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;line-height:1.3}
 .lede{margin-top:10px;color:var(--sub);font-size:.98rem;max-width:640px}
 
@@ -78,17 +79,17 @@ main{max-width:1060px;margin:0 auto;padding:12px 24px 40px}
 .btn-primary:hover{background:var(--blue-deep);text-decoration:none}
 .btn-ghost{background:var(--white);color:var(--blue);border-color:var(--line)}
 .btn-ghost:hover{border-color:var(--blue);text-decoration:none}
-.shared-list{margin-top:26px;display:grid;gap:12px}
-.shared-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
-.shared-card .t{font-weight:700;font-size:.93rem}
-.shared-card .b{margin-top:6px;font-size:.88rem;color:var(--sub);white-space:pre-wrap;word-break:break-word;max-height:9.5em;overflow:hidden}
-.shared-card .m{margin-top:10px;font-size:.78rem;color:#8A94A2;display:flex;gap:12px;align-items:center}
-.shared-card .m img{width:18px;height:18px;border-radius:50%;vertical-align:middle}
-.share-empty{margin-top:24px;color:var(--sub);font-size:.9rem}
+.share-note{margin-top:20px;font-size:.86rem;color:var(--sub)}
+.linklike{background:none;border:none;padding:0;font-size:inherit;font-family:inherit;color:var(--blue);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.linklike:hover{color:var(--blue-deep)}
+.linklike.done{color:var(--ok)}
+.mail-toast{margin-top:12px;font-size:.86rem;font-weight:600;color:var(--ok);background:#EAF6EF;border-radius:8px;padding:9px 14px;display:inline-block}
 
 /* ---------- footer / admin ---------- */
 footer{border-top:1px solid var(--line);background:var(--white)}
-.foot-inner{max-width:1060px;margin:0 auto;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.8rem;color:#8A94A2;flex-wrap:wrap}
+.foot-inner{max-width:1060px;margin:0 auto;padding:26px 24px 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;font-size:.83rem;color:var(--sub);flex-wrap:wrap}
+.foot-contact p{line-height:1.7}
+.foot-label{font-weight:700;color:var(--ink);letter-spacing:.02em;margin-bottom:2px}
 .admin-link{background:none;border:none;color:#8A94A2;font-size:.8rem;text-decoration:underline}
 .admin-link:hover{color:var(--blue)}
 
@@ -138,7 +139,7 @@ footer{border-top:1px solid var(--line);background:var(--white)}
 
 <header class="site-head">
   <div class="site-head-inner">
-    <p class="eyebrow">UpToDate&reg; Expert AI</p>
+    <img class="brand-logo" src="logo.png" alt="UpToDate Expert AI" width="352" height="120">
     <h1>진료과별 활용 예시</h1>
     <p class="lede">실제 임상 시나리오 기반의 예시 프롬프트입니다. 각 질문 옆 <b>복사</b> 버튼으로 프롬프트를 복사해 Expert AI에 바로 입력해 보세요.</p>
   </div>
@@ -152,20 +153,24 @@ footer{border-top:1px solid var(--line);background:var(--white)}
 
 <section class="share" id="share">
   <div class="share-inner">
-    <h2>프롬프트 공유</h2>
-    <p class="sub">실제 진료에서 유용했던 프롬프트가 있다면 다른 선생님들과 공유해 주세요. 공유된 프롬프트는 검토 후 예시 목록에 반영됩니다.</p>
+    <h2>프롬프트 공유 및 건의사항</h2>
+    <p class="sub">실제 진료에서 유용했던 프롬프트, 또는 사용 중 개선이 필요하다고 느끼신 부분을 보내주세요. 공유해 주신 프롬프트는 검토 후 위 예시 목록에 반영됩니다.</p>
     <div class="share-actions">
-      <a class="btn btn-primary" id="shareBtn" href="#" target="_blank" rel="noopener">내 프롬프트 공유하기</a>
-      <a class="btn btn-ghost" id="issuesBtn" href="#" target="_blank" rel="noopener">전체 공유 목록 보기</a>
+      <a class="btn btn-primary" id="sharePromptBtn" href="#">프롬프트 공유하기</a>
+      <a class="btn btn-ghost" id="feedbackBtn" href="#">건의사항 보내기</a>
     </div>
-    <div class="shared-list" id="sharedList"></div>
-    <p class="share-empty" id="sharedEmpty" hidden>아직 공유된 프롬프트가 없습니다. 첫 번째로 공유해 보세요.</p>
+    <p class="share-note">버튼을 누르면 담당자에게 보낼 메일이 작성 화면으로 열립니다. 메일 앱이 열리지 않으면 <button class="linklike" id="copyMail">jiseong.kim@wolterskluwer.com</button> 주소로 보내주세요.</p>
+    <p class="mail-toast" id="mailToast" hidden>메일 작성 화면을 열었습니다.</p>
   </div>
 </section>
 
 <footer>
   <div class="foot-inner">
-    <span>UpToDate Expert AI 활용 예시 · Wolters Kluwer Health Korea</span>
+    <div class="foot-contact">
+      <p class="foot-label">문의</p>
+      <p>Wolters Kluwer 한국지사 김지성</p>
+      <p>E-mail : <a href="mailto:jiseong.kim@wolterskluwer.com">jiseong.kim@wolterskluwer.com</a></p>
+    </div>
     <button class="admin-link" id="adminOpen">관리자</button>
   </div>
 </footer>
@@ -233,8 +238,7 @@ const CONFIG = {
   owner: "icannotcodejustHCI",
   repo:  "EAI-Prompts",
   branch: "main",
-  casesPath: "cases.json",
-  shareLabel: "prompt-share"
+  casesPath: "cases.json"
 };
 
 (function deriveRepo(){
@@ -309,7 +313,7 @@ function renderAll(){
 
   const guide = document.createElement("div");
   guide.className = "guide";
-  guide.innerHTML = "위 예시 질문을 그대로 입력해 보시거나, 실제 진료에서 마주치신 케이스로 테스트해 보시기 바랍니다. 사용 중 개선이 필요하다고 느끼신 부분은 하단 <a href='#share'>프롬프트 공유</a> 섹션을 통해 남기실 수 있습니다.";
+  guide.innerHTML = "위 예시 질문을 그대로 입력해 보시거나, 실제 진료에서 마주치신 케이스로 테스트해 보시기 바랍니다. 사용 중 개선이 필요하다고 느끼신 부분은 하단 <a href='#share'>프롬프트 공유 및 건의사항</a> 섹션을 통해 남겨주시기 바랍니다.";
   root.appendChild(guide);
 
   root.querySelectorAll(".copy-btn").forEach(btn => {
@@ -332,39 +336,53 @@ function filterSpec(specId, chip){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
-/* ---------- 프롬프트 공유 (GitHub Issues) ---------- */
-function setupShare(){
-  if(!CONFIG.owner || !CONFIG.repo) return;
-  const base = "https://github.com/" + CONFIG.owner + "/" + CONFIG.repo;
-  document.getElementById("shareBtn").href =
-    base + "/issues/new?template=prompt-share.md&title=" + encodeURIComponent("[프롬프트 공유] ");
-  document.getElementById("issuesBtn").href =
-    base + "/issues?q=" + encodeURIComponent("label:" + CONFIG.shareLabel);
-  loadShared();
+/* ---------- 프롬프트 공유 및 건의사항 (메일) ---------- */
+const CONTACT_MAIL = "jiseong.kim@wolterskluwer.com";
+
+function openMail(subject, body){
+  const href = "mailto:" + CONTACT_MAIL +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+  window.location.href = href;
+  const toast = document.getElementById("mailToast");
+  toast.hidden = false;
+  clearTimeout(openMail._t);
+  openMail._t = setTimeout(()=>{ toast.hidden = true; }, 4000);
 }
 
-async function loadShared(){
-  const list = document.getElementById("sharedList");
-  const empty = document.getElementById("sharedEmpty");
-  try{
-    const r = await fetch(API + "/repos/" + CONFIG.owner + "/" + CONFIG.repo +
-      "/issues?labels=" + CONFIG.shareLabel + "&state=open&per_page=20&sort=created&direction=desc");
-    if(!r.ok) throw new Error(r.status);
-    const issues = (await r.json()).filter(i => !i.pull_request);
-    if(!issues.length){ empty.hidden = false; return; }
-    issues.forEach(i=>{
-      const card = document.createElement("article");
-      card.className = "shared-card";
-      card.innerHTML =
-        '<div class="t">' + esc(i.title) + '</div>' +
-        '<div class="b">' + esc(i.body || "") + '</div>' +
-        '<div class="m"><img src="' + esc(i.user.avatar_url) + '" alt="">' +
-        '<span>' + esc(i.user.login) + '</span>' +
-        '<span>' + new Date(i.created_at).toLocaleDateString("ko-KR") + '</span>' +
-        '<a href="' + esc(i.html_url) + '" target="_blank" rel="noopener">GitHub에서 보기</a></div>';
-      list.appendChild(card);
-    });
-  }catch(e){ empty.hidden = false; }
+function setupShare(){
+  document.getElementById("sharePromptBtn").addEventListener("click", e => {
+    e.preventDefault();
+    openMail(
+      "[UpToDate Expert AI] 프롬프트 공유",
+      "진료과:\n\n" +
+      "케이스 상황 (환자 식별 정보는 제외해 주세요):\n\n\n" +
+      "입력한 프롬프트:\n\n\n" +
+      "활용 팁 / 코멘트:\n\n\n" +
+      "─────────────\n소속 / 성함:\n"
+    );
+  });
+
+  document.getElementById("feedbackBtn").addEventListener("click", e => {
+    e.preventDefault();
+    openMail(
+      "[UpToDate Expert AI] 건의사항",
+      "건의 내용:\n\n\n" +
+      "관련 진료과 또는 기능:\n\n\n" +
+      "─────────────\n소속 / 성함:\n"
+    );
+  });
+
+  const copyBtn = document.getElementById("copyMail");
+  copyBtn.addEventListener("click", async () => {
+    try{
+      await navigator.clipboard.writeText(CONTACT_MAIL);
+      const orig = copyBtn.textContent;
+      copyBtn.textContent = "주소를 복사했습니다";
+      copyBtn.classList.add("done");
+      setTimeout(()=>{ copyBtn.textContent = orig; copyBtn.classList.remove("done"); }, 1800);
+    }catch(err){ window.location.href = "mailto:" + CONTACT_MAIL; }
+  });
 }
 
 /* ---------- 관리자 ---------- */
